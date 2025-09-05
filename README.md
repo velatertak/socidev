@@ -129,6 +129,49 @@ To stop all running applications:
 - **Database:** MySQL
 - **DevOps:** npm scripts, Shell scripts
 
+## Team Workflow
+
+To ensure all team members have the latest code and dependencies, follow these practices:
+
+### Daily Routine
+1. **Start each work session** by running the update script:
+   ```bash
+   ./update-all.sh
+   ```
+
+2. **Before making changes**, always pull the latest code:
+   ```bash
+   git pull origin master
+   ```
+
+### Contributing Changes
+1. **Create a feature branch** for your work:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make your changes** and commit frequently:
+   ```bash
+   git add .
+   git commit -m "Description of your changes"
+   ```
+
+3. **Push your branch** to GitHub:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+4. **Create a Pull Request** on GitHub for review
+
+5. **After merging**, switch back to master and pull:
+   ```bash
+   git checkout master
+   git pull origin master
+   ```
+
+### Keeping Dependencies Updated
+The project includes Git hooks that automatically check for and install dependency updates when pulling changes.
+
 ## Contributing
 
 1. Fork the repository
