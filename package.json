@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "dev": "concurrently \"npm run backend\" \"npm run admin-backend\" \"npm run frontend\" \"npm run admin-frontend\"",
+    "backend": "cd backend && npm run dev",
+    "admin-backend": "cd admin-panel && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "admin-frontend": "cd admin-panel/frontend && npm run dev",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "mysql2": "^3.14.4",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
