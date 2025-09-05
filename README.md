@@ -1,89 +1,146 @@
-# Social Developer Platform
+# Socidev - Social Media Automation Platform
 
-This project contains multiple applications that work together to provide a complete social media automation platform.
+Socidev is a comprehensive social media automation platform that allows users to automate various social media tasks such as likes, followers, views, and subscribers across multiple platforms.
 
-## Applications and Ports
+## Project Structure
 
-1. **Main Backend API** - Port 3000
-   - REST API for the main application
-   - Built with Node.js, Express, and Sequelize
+The project consists of multiple integrated applications:
 
-2. **Admin Panel Backend** - Port 5001
-   - REST API for the admin panel
-   - Built with Node.js, Express, and Prisma
+```
+socidev/
+├── backend/              # Main backend API (Port 3000)
+├── frontend/             # Main frontend application (Port 5173)
+├── admin-panel/          # Admin panel with backend (Port 5001) and frontend (Port 3002/3003)
+├── start-all.sh          # Script to start all applications
+└── stop-all.sh           # Script to stop all applications
+```
 
-3. **Main Frontend** - Port 5173
-   - User-facing web application
+## Applications
+
+1. **Main Backend API** (Port 3000)
+   - RESTful services for the main application
+   - Built with Node.js, Express, and Sequelize ORM
+
+2. **Admin Panel Backend** (Port 5001)
+   - Admin-specific REST API
+   - Built with Node.js, Express, and Prisma ORM
+
+3. **Main Frontend** (Port 5173)
+   - User-facing web interface
    - Built with React, TypeScript, and Vite
 
-4. **Admin Panel Frontend** - Port 3002
-   - Administrative dashboard
+4. **Admin Panel Frontend** (Port 3002/3003)
+   - Dashboard for administrative tasks
    - Built with React, TypeScript, and Vite
+
+## Prerequisites
+
+- Node.js (LTS version recommended)
+- npm or yarn
+- MySQL database server
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Social-Developer/socidev.git
+   cd socidev
+   ```
+
+2. Install dependencies for all applications:
+   ```bash
+   npm install
+   cd backend && npm install && cd ..
+   cd frontend && npm install && cd ..
+   cd admin-panel && npm install && cd ..
+   cd admin-panel/frontend && npm install && cd ../..
+   ```
+
+3. Configure environment variables:
+   - Copy `.env.example` to `.env` in each directory and update the values
+   - Make sure to configure your database connections
+
+4. Set up the database:
+   - Create a MySQL database
+   - Run the database migration scripts if available
 
 ## Running the Applications
 
-### Option 1: Using npm scripts (Recommended)
+### Development Mode
 
-To start all applications simultaneously:
-
-```bash
-npm run dev
-```
-
-To start individual applications:
-
-```bash
-# Start main backend
-npm run backend
-
-# Start admin panel backend
-npm run admin-backend
-
-# Start main frontend
-npm run frontend
-
-# Start admin panel frontend
-npm run admin-frontend
-```
-
-### Option 2: Using shell scripts
-
-To start all applications:
-
+To start all applications in development mode:
 ```bash
 ./start-all.sh
 ```
 
-To stop all applications:
+This will start:
+- Main Backend API on http://localhost:3000
+- Admin Panel Backend on http://localhost:5001
+- Main Frontend on http://localhost:5173
+- Admin Panel Frontend on http://localhost:3002 (or 3003 if 3002 is in use)
 
+### Individual Application Startup
+
+You can also start each application individually:
+
+1. **Main Backend:**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+
+2. **Admin Panel Backend:**
+   ```bash
+   cd admin-panel
+   npm run dev
+   ```
+
+3. **Main Frontend:**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+4. **Admin Panel Frontend:**
+   ```bash
+   cd admin-panel/frontend
+   npm run dev
+   ```
+
+## Stopping the Applications
+
+To stop all running applications:
 ```bash
 ./stop-all.sh
 ```
 
-## Accessing the Applications
+## Features
 
-After starting the applications, you can access them at:
+- User authentication and session management
+- Task automation and scheduling
+- Analytics and reporting
+- Order and payment management
+- Admin control panel for system monitoring and configuration
 
-- **Main Frontend**: http://localhost:5173
-- **Admin Panel**: http://localhost:3002
-- **Main Backend API**: http://localhost:3000
-- **Admin Backend API**: http://localhost:5001
+## Technology Stack
 
-## API Endpoints
+- **Frontend:** React, TypeScript, Vite
+- **Backend:** Node.js, Express, Sequelize ORM, Prisma ORM
+- **Database:** MySQL
+- **DevOps:** npm scripts, Shell scripts
 
-### Main Backend (Port 3000)
-- Base URL: http://localhost:3000/api
+## Contributing
 
-### Admin Backend (Port 5001)
-- Base URL: http://localhost:5001/api
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
 
-## Environment Variables
+## License
 
-Each application has its own `.env` file for configuration:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Main Backend: `backend/.env`
-- Admin Backend: `admin-panel/.env`
-- Main Frontend: `frontend/.env`
-- Admin Frontend: `admin-panel/frontend/.env`
+## Support
 
-Make sure to configure these files with your specific settings before running the applications.
+For support, please open an issue on the GitHub repository or contact the development team.
